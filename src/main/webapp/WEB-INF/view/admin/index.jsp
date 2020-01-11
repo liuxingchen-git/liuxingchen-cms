@@ -8,15 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>天天头条管理员后台系统</title>
-<!-- 引入 css -->
+<!-- 引入 css -->      
 <link rel="stylesheet" type="text/css"
+
 	href="${pageContext.request.contextPath}/resource/css/bootstrap.css">
 <!-- 引入js -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resource/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-	<div class="container" style="padding-top: 10px">
+	<div class="container-fluid" style="padding-top: 10px">
 		<!-- 头 -->
 		<div class="row rounded" style="background-color: #009FD9; height: 55px">
 			<div class="col-md-12"><img alt="" src="/resource/images/logo.png"

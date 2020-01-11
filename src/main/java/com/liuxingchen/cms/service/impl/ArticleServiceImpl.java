@@ -27,13 +27,19 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public boolean update(Article article) {
 		// TODO Auto-generated method stub
-		return articleMapper.update(article) >0;
+		return articleMapper.update(article) > 0;
 	}
 
 	@Override
 	public Article select(Integer id) {
 		// TODO Auto-generated method stub
 		return articleMapper.select(id);
+	}
+
+	@Override
+	public boolean insert(Article article) {
+		// TODO Auto-generated method stub
+		return articleMapper.insert(article) > 0;
 	}
 
 }

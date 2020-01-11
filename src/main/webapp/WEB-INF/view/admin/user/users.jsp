@@ -35,7 +35,7 @@
 	}
 	</script>
 </head>
-<body class="container">
+<body class="container-fluid">
 	<div>
 		<form id="form1">
 			用户名:<input type="text" name="username" value="${user.username}">
@@ -67,7 +67,7 @@
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				<td>
 					<c:if test="${u.locked==0}">
-						<button type="button" class="btn btn-success" onclick="update(this,${u.id})">正常</button>
+						<button type ="button" class="btn btn-success" onclick="update(this,${u.id})">正常</button>
 					</c:if>
 					<c:if test="${u.locked==1}">
 						<button type="button" class="btn btn-danger" onclick="update(this,${u.id})">禁用</button>
