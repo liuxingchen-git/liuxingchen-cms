@@ -37,6 +37,12 @@
 
 	<!-- jar依赖 -->
 	<dependencies>
+		<!-- 依赖工具类工程 -->
+		<dependency>
+			<groupId>com.liuxingchen</groupId>
+			<artifactId>liuxingchen-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- spring 及springMVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>

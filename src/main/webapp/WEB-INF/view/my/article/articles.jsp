@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title></title>
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title></title>
 <!-- 引入 css -->
 <link rel="stylesheet" type="text/css"
 	href="/resource/css/bootstrap.css">
@@ -29,6 +29,11 @@ function articleDetail(id){
 	})
 	
 }
+$(function(){
+	$("[name='status']").change(function(){
+		query();
+	})
+})
 
 function query(){
 	//获取选中单选框的值
@@ -47,49 +52,51 @@ $("[name='status'][value='"+checked+"']").prop("checked",true);
 
 <body>
 	<div class="container">
-		<div class="form-inline">
-			<div class="form-check">
-				<input type="radio" class="form-check-input" name="status" value="0"
-					id="ck0"><label class="form-check-label" for="ck0">待审</label>
-			</div>
-			<div class="form-check">
-				<input type="radio" class="form-check-input" name="status" value="1"
-					id="ck1"><label class="form-check-label" for="ck1">已审</label>
-			</div>
-			<div class="form-check">
-				<input type="radio" class="form-check-input" name="status" value="9"
-					id="ck9"><label class="form-check-label" for="ck9">驳回</label>
-			</div>
-			<div>
-				<button class="btn btn-warning" type="button" onclick="query()">查询</button>
-			</div>
-
+     <div class="form-inline">
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="status" value="0" 
+				id="ck0"><label class="form-check-label" for="ck0">待审</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="status" value="1"
+				id="ck1"><label class="form-check-label" for="ck1">已审</label>
+		</div>
+		<div class="form-check">
+			<input type="radio" class="form-check-input" name="status" value="9"
+				id="ck9"><label class="form-check-label" for="ck9">驳回</label>
+		</div>
+		<!-- <div>
+			<button class="btn btn-primary" type="button" onclick="query()">查询</button>
+		</div> -->
+		
 		</div>
 		<hr>
-
-		<c:forEach items="${info.list}" var="article">
-			<div class="media">
-				<img src="/pic/${article.picture}"
-					class="align-self-center mr-3 rounded" alt="..." width="156px"
-					height="101.8">
-				<div class="media-body">
-					<h5 class="mt-0">${article.title }</h5>
-					<button type="button" class="btn btn-link" style="float: right"
+    
+	<c:forEach items="${info.list}" var="article">
+		<div class="media">
+			<img src="/pic/${article.picture}"
+				class="align-self-center mr-3 rounded" alt="..." width="156px"
+				height="101.8">
+			<div class="media-body">
+				<h5 class="mt-0">${article.title }
+					
+				</h5>
+				<button type="button" class="btn btn-link"  style="float: right"
 						onclick="articleDetail(${article.id })" data-toggle="modal"
 						data-target="#exampleModalLong">详情</button>
-
-					<p>${article.summary }</p>
-					<p>
-						<fmt:formatDate value="${article.created }"
-							pattern="yyyy-MM-dd HH:mm:ss" />
-						0 评论
-					</p>
-				</div>
+				
+				<p>${article.summary }</p>
+				<p>
+					<fmt:formatDate value="${article.created }"
+						pattern="yyyy-MM-dd HH:mm:ss" />
+					0 评论
+				</p>
 			</div>
-			<hr>
-		</c:forEach>
+		</div>
+		<hr>
+	</c:forEach>
 
-		<jsp:include page="/WEB-INF/view/common/pages.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/common/pages.jsp"></jsp:include>
 	</div>
 
 

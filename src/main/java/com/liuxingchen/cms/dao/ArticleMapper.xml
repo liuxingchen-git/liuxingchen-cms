@@ -45,6 +45,32 @@
 
 			</if>
 
+			<if test="channelId!=null">
+
+				and channel_Id = #{channelId}
+
+			</if>
+			<if test="categoryId!=null">
+
+				and category_Id = #{categoryId}
+
+			</if>
+
+			<if test="userId!=null">
+
+				and user_Id = #{userId}
+
+			</if>
+
+			<!-- 是否是热点文章 -->
+			<if test="hot!=null">
+				and hot = #{hot}
+			</if>
+			<!-- 查询某个时间段内的文章 -->
+			<if test="created != null">
+				and created between #{created ,jdbcType=TIMESTAMP} and now()
+			</if>
+
 		</where>
 
 		order by created desc
@@ -89,5 +115,9 @@
 		hits,hot,deleted,status,content_type,picture)
 		values(#{title},#{content},#{summary},#{userId},#{channelId},#{categoryId},
 		#{created},#{updated},#{hits},#{hot},#{deleted},#{status},#{contentType},#{picture})
+
+
+
 	</insert>
+
 </mapper>

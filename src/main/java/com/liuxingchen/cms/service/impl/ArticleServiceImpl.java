@@ -27,7 +27,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public boolean update(Article article) {
 		// TODO Auto-generated method stub
-		return articleMapper.update(article) > 0;
+		return articleMapper.update(article) >0;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public boolean insert(Article article) {
 		// TODO Auto-generated method stub
-		return articleMapper.insert(article) > 0;
+		return articleMapper.insert(article)>0;
 	}
 
 }

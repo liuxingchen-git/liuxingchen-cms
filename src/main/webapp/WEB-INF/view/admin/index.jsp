@@ -5,29 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>天天头条管理员后台系统</title>
-<!-- 引入 css -->      
+<title>今日头条管理员后台</title>
+<!-- 引入 css -->
 <link rel="stylesheet" type="text/css"
-
 	href="${pageContext.request.contextPath}/resource/css/bootstrap.css">
 <!-- 引入js -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resource/js/jquery-3.2.1.js"></script>
 </head>
 <body>
+  
 	<div class="container-fluid" style="padding-top: 10px">
-		<!-- 头 -->
+	<!-- 头 -->
 		<div class="row rounded" style="background-color: #009FD9; height: 55px">
 			<div class="col-md-12"><img alt="" src="/resource/images/logo.png"
-				style="width: 55px; height: 55px"><font color="white">管理员后台系统</font>
-				<div style="float: right;padding-top: 15px"> <a href=""><font style="color: white"> 注销</font></a></div>
+				style="width: 55px; height: 55px" class="rounded-circle"><font color="white">管理员后台系统</font>
+				<div style="float: right;padding-top: 10px"> <a href=""><font style="color: white"> 注销</font></a></div>
 				</div>
 		  
 		</div>
+	<div class="container-fluid" style="padding-top: 5px;">
 		
-		<div class="row" style="padding-top: 10px">
+		
+		<div class="row" style="padding-top: 10px ;height: 500px" >
 			<div class="col-md-2 rounded" style="background-color: #ccc;text-align: center;padding-top: 5px">
 				
 				<nav class="nav flex-column">
@@ -38,7 +40,7 @@
 				</nav>
 			</div>
              <!-- 中间区域 -->
-			<div class="col-md-10" id="center">
+			<div class="col-md-10" id="center" style="padding-right: 0px" >
 			
 			</div>
 
