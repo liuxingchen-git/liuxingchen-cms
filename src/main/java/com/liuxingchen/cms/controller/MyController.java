@@ -2,18 +2,23 @@ package com.liuxingchen.cms.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.hssf.model.PictureShape;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,9 +26,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.liuxingchen.cms.domain.Article;
 import com.liuxingchen.cms.domain.Category;
 import com.liuxingchen.cms.domain.Channel;
+import com.liuxingchen.cms.domain.Collect;
 import com.liuxingchen.cms.domain.User;
 import com.liuxingchen.cms.service.ArticleService;
 import com.liuxingchen.cms.service.ChannelService;
+import com.liuxingchen.cms.service.CollectService;
+import com.liuxingchen.cms.util.ImageUtil;
 import com.github.pagehelper.PageInfo;
 /**
  * 
@@ -41,6 +49,9 @@ public class MyController {
 	
 	@Resource
 	private ChannelService channelService;
+	
+	@Resource
+	private CollectService collectService;
 	/**
 	 * 
 	 * @Title: index 
@@ -170,4 +181,67 @@ public class MyController {
 			
 		}
 		
+		/**
+		 * 
+		 * @Title: collect 
+		 * @Description: 我 的收藏
+		 * @param page
+		 * @param pageSize
+		 * @param session
+		 * @param model
+		 * @return
+		 * @return: String
+		 */
+		@RequestMapping("collect")
+		public String collect(@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5")Integer pageSize,HttpSession session,Model model) {
+		   User user = (User) session.getAttribute("user");
+		   if(null ==user) {
+			   return "redirect:/my";//sesesion过期
+		   }
+			PageInfo<Collect> info = collectService.selects(user.getId(), page, pageSize);
+			model.addAttribute("info",info);
+			return "my/collect/articles";
+		}
+		
+		/**
+		 * 
+		 * @Title: pictures 
+		 * @Description: 去发布图片页面
+		 * @return
+		 * @return: String
+		 */
+		@GetMapping("article/pictures")
+		private String pictures() {
+			// TODO Auto-generated method stub
+			return "my/article/pictures";
+		}	
+		
+		/**
+		 * 
+		 * @Title: pictureUpload 
+		 * @Description: 我的图片
+		 * @param file
+		 * @param request
+		 * @param response
+		 * @param session
+		 * @return
+		 * @throws IllegalStateException
+		 * @throws IOException
+		 * @return: boolean
+		 */
+		@ResponseBody
+		@RequestMapping(value = "article/pictureUpload",method = {RequestMethod.GET,RequestMethod.POST})
+		private boolean pictureUpload(@RequestParam("file")MultipartFile[] file,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IllegalStateException, IOException {
+			List list = new ArrayList();
+			ImageUtil imageUtil = new ImageUtil();
+			if (file!=null&&file.length>0) {
+				for (int i = 0; i < file.length; i++) {
+					MultipartFile files = file[i];
+					
+					String amageurl = imageUtil.ImageUpload(files, request, response, session);
+					list.add(amageurl);
+				}
+			}
+			return articleService.inserts(list);
+		}
 }

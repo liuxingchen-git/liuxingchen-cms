@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
 /**
  * 
  * @ClassName: AdminInterceptor 
  * @Description: 管理员拦截器
- * @author: charles
- * @date: 2020年1月11日 下午4:13:20
+ * @author: 煜
+ * @date: 2020年2月12日 下午6:00:43
  */
 public class AdminInterceptor extends HandlerInterceptorAdapter {
 

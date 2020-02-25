@@ -6,7 +6,7 @@ import java.util.Date;
  * 
  * @ClassName: Article 
  * @Description: 文章
- * @author: charles
+ * @author: 煜
  * @date: 2019年12月10日 下午3:08:27
  */
 public class Article implements Serializable {
@@ -56,6 +56,17 @@ public class Article implements Serializable {
     private User user;//发布人
     private Channel channel;//栏目
     private Category category;//分类
+
+    private Details details;
+    
+    
+	public Details getDetails() {
+		return details;
+	}
+
+	public void setDetails(Details details) {
+		this.details = details;
+	}
 
 	public Integer getId() {
 		return id;

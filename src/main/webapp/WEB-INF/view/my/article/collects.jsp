@@ -18,76 +18,30 @@
 <script type="text/javascript">
 
 function goPage(page){
-	$("#center").load("/my/article/articles?page="+page)
+	$("#center").load("/my/article/collects?page="+page)
 }
-
-function articleDetail(id){
-	$.get("/my/article/select" ,{id:id},function(article){
-		$("#articleConent").empty();
-		$("#mytitle").append(article.title);
-		$("#articleConent").append(article.content);
-	})
-	
-}
-$(function(){
-	$("[name='status']").change(function(){
-		query();
-	})
-})
-
-function query(){
-	//获取选中单选框的值
-	var status=$("[name='status']:checked").val() ;  //$("[type='radio']:checked").val();
-	
-	$("#center").load("/my/article/articles?status="+status)
-}
-
-//查询条件回显
-var checked='${article.status}';
-
-$("[name='status'][value='"+checked+"']").prop("checked",true);
 
 </script>
 </head>
 
 <body>
-	<div class="container">
-     <div class="form-inline">
-		<div class="form-check">
-			<input type="radio" class="form-check-input" name="status" value="0" 
-				id="ck0"><label class="form-check-label" for="ck0">待审</label>
-		</div>
-		<div class="form-check">
-			<input type="radio" class="form-check-input" name="status" value="1"
-				id="ck1"><label class="form-check-label" for="ck1">已审</label>
-		</div>
-		<div class="form-check">
-			<input type="radio" class="form-check-input" name="status" value="9"
-				id="ck9"><label class="form-check-label" for="ck9">驳回</label>
-		</div>
-		<!-- <div>
-			<button class="btn btn-primary" type="button" onclick="query()">查询</button>
-		</div> -->
-		
-		</div>
-		<hr>
     
-	<c:forEach items="${info.list}" var="article">
+	<c:forEach items="${info.list}" var="selectByTitleAndUserId">
 		<div class="media">
-			<img src="/pic/${article.picture}"
+			<img src="/pic/${selectByTitleAndUserId.picture}"
 				class="align-self-center mr-3 rounded" alt="..." width="156px"
 				height="101.8">
 			<div class="media-body">
-				<h5 class="mt-0">${article.title }
+				<h5 class="mt-0">${selectByTitleAndUserId.title }
 					
 				</h5>
 				<button type="button" class="btn btn-link"  style="float: right"
-						onclick="articleDetail(${article.id })" data-toggle="modal"
+						onclick="articleDetail(${selectByTitleAndUserId.id })" data-toggle="modal"
 						data-target="#exampleModalLong">详情</button>
 				
-				<p>${article.summary }</p>
+				<p>${selectByTitleAndUserId.summary }</p>
 				<p>
-					<fmt:formatDate value="${article.created }"
+					<fmt:formatDate value="${selectByTitleAndUserId.created }"
 						pattern="yyyy-MM-dd HH:mm:ss" />
 					0 评论
 				</p>

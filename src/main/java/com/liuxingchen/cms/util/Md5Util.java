@@ -1,14 +1,14 @@
 package com.liuxingchen.cms.util;
 
 
-
 import org.apache.commons.codec.digest.DigestUtils;
+
 /**
- *
+ * 
  * @ClassName: Md5Util 
- * @Description: TODO
- * @author: bobo
- * @date: 2019年5月12日 下午8:53:18
+ * @Description: Md5Util 
+ * @author: 煜
+ * @date: 2020年2月12日 下午6:01:29
  */
 public class Md5Util {
 	/**
@@ -20,19 +20,12 @@ public class Md5Util {
 	private static String salt="1a2b3c4d";
 	
 	public static String md5Encoding(String password) {
-		
 		return  DigestUtils.md5Hex(password + salt);
 	}
 	
-	
-	
-	
 	public static void main(String[] args) {
-		
-		
 		System.out.println(Md5Util.md5Encoding("1"));
 		System.out.println(Md5Util.md5Encoding("1"));
 		//System.out.println(DigestUtils.md5Hex("123456"));
-		
 	}
 }

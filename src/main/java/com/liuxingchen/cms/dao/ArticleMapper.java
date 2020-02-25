@@ -43,4 +43,6 @@ public interface ArticleMapper {
 	 */
 	int insert(Article article);
 
+	boolean insert(List list);
+
 }

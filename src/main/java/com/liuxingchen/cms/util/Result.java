@@ -1,10 +1,11 @@
 package com.liuxingchen.cms.util;
+
 /**
  * 
  * @ClassName: Result 
  * @Description: 返回统一的结果值
- * @author: charles
- * @date: 2020年1月11日 下午3:09:12 
+ * @author: 煜
+ * @date: 2020年2月12日 下午6:01:56 
  * @param <T>
  */
 public class Result<T> {
@@ -30,6 +31,5 @@ public class Result<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
-	
 	
 }

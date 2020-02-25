@@ -42,4 +42,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.insert(article)>0;
 	}
 
+	@Override
+	public boolean inserts(List list) {
+		// TODO Auto-generated method stub
+		return articleMapper.insert(list);
+	}
+
 }

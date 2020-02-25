@@ -1,6 +1,9 @@
 package com.liuxingchen.cms.service;
 
 import com.liuxingchen.cms.domain.Article;
+
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 
 public interface ArticleService {
@@ -45,4 +48,6 @@ public interface ArticleService {
 	 * @return: int
 	 */
 	boolean insert(Article article);
+
+	boolean inserts(List list);
 }
