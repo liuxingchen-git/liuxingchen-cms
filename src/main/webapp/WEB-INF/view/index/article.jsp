@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>${article.title }</title>
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- 引入 css -->
 <link rel="stylesheet" type="text/css"
 	href="/resource/css/bootstrap.css">

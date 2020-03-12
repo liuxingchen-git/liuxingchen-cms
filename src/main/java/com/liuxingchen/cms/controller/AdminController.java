@@ -2,6 +2,8 @@ package com.liuxingchen.cms.controller;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,9 @@ public class AdminController {
 	private ArticleService articleService;
 	@Resource
 	private LinksService linksService;
+	@SuppressWarnings("rawtypes")
+	@Autowired
+	private RedisTemplate redisTemplate;
 	
    /**
     * 
@@ -74,9 +79,13 @@ public class AdminController {
 	
 	
 	//修改文章
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping("article/update")
 	public boolean update(Article article) {
+		/** 设置缓存的Key **/
+		String cacheKey = "hotlist:1";
+		redisTemplate.delete(cacheKey);
 		return articleService.update(article);
 	}
 	//查询单个文章
