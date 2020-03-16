@@ -200,9 +200,9 @@
 				<div class="card"
 					style="width: 18rem; margin-bottom: 5px; border: 0px">
 					<div class="form-inline">
-						<input type="text" placeholder="请输入要搜索的内容" class="form-control"
-							style="width: 14rem; margin-right: 5px">
-						<button class="btn btn-info" type="button">搜索</button>
+						<input type="text" placeholder="请输入要搜索的内容" class="form-control" id="keyword"
+							style="width: 14rem; margin-right: 5px" >
+						<button class="btn btn-info" type="button" onclick="search();">搜索</button>
 					</div>
 
 				</div>
@@ -361,6 +361,11 @@
 			//注销
 			function logout() {
 				location.href = "/passport/logout";
+			}
+			
+			//搜索
+			function search() {
+				window.open("/search?keyword="+$("#keyword").val());
 			}
 		</script>
 </body>

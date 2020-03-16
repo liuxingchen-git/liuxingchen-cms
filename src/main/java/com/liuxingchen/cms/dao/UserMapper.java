@@ -2,6 +2,8 @@ package com.liuxingchen.cms.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.liuxingchen.cms.domain.User;
 
 public interface UserMapper {
@@ -45,5 +47,13 @@ public interface UserMapper {
 	 */
 	int insert(User user);
 	
-	
+	/**
+	 * @Title: selectIdList   
+	 * @Description: 查询头像和昵称不为空的用户Id   
+	 * @param: @return      
+	 * @return: List<Integer>      
+	 * @throws
+	 */
+	@Select("SELECT id FROM cms_user WHERE nickname IS NOT NULL")
+	List<Integer> selectIdList();
 }

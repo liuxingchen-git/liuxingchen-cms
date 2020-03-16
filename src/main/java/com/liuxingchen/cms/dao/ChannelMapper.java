@@ -2,6 +2,8 @@ package com.liuxingchen.cms.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.liuxingchen.cms.domain.Category;
 import com.liuxingchen.cms.domain.Channel;
 
@@ -34,5 +36,12 @@ public interface ChannelMapper {
 	 * @return: List<Category>
 	 */
 	List<Category> selectsByCid(Integer channelId);
+	
+	@Select("SELECT id FROM cms_channel")
+	List<Integer> selectChannelIdList();
+	
+
+	@Select("SELECT id FROM cms_category where channel_id=#{channelId}")
+	List<Integer> selectCateIdList(Integer channelId);
 
 }

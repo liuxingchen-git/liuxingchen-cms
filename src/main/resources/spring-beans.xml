@@ -96,4 +96,7 @@
 	<!-- 导入elasticsearch -->
 	<import resource="elasticsearch.xml"/>
 	
+	<!-- 导入kafka -->
+	<import resource="kafka-producer.xml"/>
+	<import resource="kafka-consumer.xml"/>
 </beans>

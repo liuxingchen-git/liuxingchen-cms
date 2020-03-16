@@ -81,7 +81,7 @@ public class EsUtils {
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static  PageInfo<?> findByKeyword(ElasticsearchTemplate elasticsearchTemplate, String keyword, 
+	public static  PageInfo<?> findBykeyword(ElasticsearchTemplate elasticsearchTemplate, String keyword, 
 			Class<?> clazz, String sortField,Integer pageNum,Integer pageSize, String highLightfieldNames) {
 		/** 定义要返回结果PageInfo **/
 		PageInfo<?> pageInfo = new PageInfo<>();
